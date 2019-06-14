@@ -1,3 +1,4 @@
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,3 +9,4 @@ public class MainClassTest extends MainClass{
         Assert.assertTrue("getLocalNumber gave not 14" , this.getLocalNumber() == 14);
     }
 }
+
