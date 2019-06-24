@@ -91,6 +91,35 @@ public class FirstTest
 
     
     @Test
+    public void testCheckTextBeforeSearch()
+    {
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find the search field on main screen"
+        );
+
+        WebElement element = waitForElementPresent(
+                By.id("org.wikipedia:id/search_src_text"),
+                "Cannot find the search field on search screen"
+        );
+
+        String text_in_the_search_field = element.getAttribute("text");
+
+        Assert.assertEquals(
+                "There is no 'Search…' word in the search field!",
+                "Search…",
+                text_in_the_search_field
+        );
+
+        waitForElementAndSendKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                "Java",
+                "Cannot find the search field on search screen"
+        );
+    }
+
+
+    @Test
     public void testFindArticleAndCheckTitle()
     {
         waitForElementAndClick(
