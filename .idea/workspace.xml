@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b835b34-9fe7-4aea-9e9c-25714f141cd5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FirstTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FirstTest.java" afterDir="false" />
     </list>
@@ -21,10 +21,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="68" column="61" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="61" />
+            <state relative-caret-position="148">
+              <caret line="109" column="23" selection-start-line="109" selection-start-column="23" selection-end-line="109" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <marker date="1561402779237" expanded="true" signature="1992:2837" ph="..." />
               </folding>
             </state>
           </provider>
@@ -79,8 +80,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -92,8 +93,8 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/selenium-server-standalone-3.4.0.jar!/" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="project.structure.side.proportion" value="0.31609195" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -107,7 +108,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.FirstTest.CloseSearch">
+  <component name="RunManager" selected="JUnit.FirstTest.testCheckTextBeforeSearch">
     <configuration name="FirstTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation" />
       <option name="PACKAGE_NAME" value="" />
@@ -117,40 +118,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FirstTest.CloseSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FirstTest.testCheckTextBeforeSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="FirstTest" />
-      <option name="METHOD_NAME" value="CloseSearch" />
+      <option name="METHOD_NAME" value="testCheckTextBeforeSearch" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainClassTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FirstTest.testCloseSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MainClassTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainClassTest.testGetClassNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JavaAppiumAutomation" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MainClassTest" />
-      <option name="METHOD_NAME" value="testGetClassNumber" />
+      <option name="MAIN_CLASS_NAME" value="FirstTest" />
+      <option name="METHOD_NAME" value="testCloseSearch" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainClassTest.testGetClassString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FirstTest.testFindArticleAndCheckTitle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MainClassTest" />
-      <option name="METHOD_NAME" value="testGetClassString" />
+      <option name="MAIN_CLASS_NAME" value="FirstTest" />
+      <option name="METHOD_NAME" value="testFindArticleAndCheckTitle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FirstTest.testSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaAppiumAutomation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FirstTest" />
+      <option name="METHOD_NAME" value="testSearch" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -158,11 +160,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FirstTest.CloseSearch" />
+        <item itemvalue="JUnit.FirstTest.testCheckTextBeforeSearch" />
+        <item itemvalue="JUnit.FirstTest.testFindArticleAndCheckTitle" />
+        <item itemvalue="JUnit.FirstTest.testCloseSearch" />
+        <item itemvalue="JUnit.FirstTest.testSearch" />
         <item itemvalue="JUnit.FirstTest" />
-        <item itemvalue="JUnit.MainClassTest" />
-        <item itemvalue="JUnit.MainClassTest.testGetClassString" />
-        <item itemvalue="JUnit.MainClassTest.testGetClassNumber" />
       </list>
     </recent_temporary>
   </component>
@@ -180,42 +182,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FirstTest_CloseSearch - 2019.06.23 at 12h 20m 34s.xml">
+    <history-entry file="FirstTest_CloseSearch - 2019.06.23 at 14h 58m 18s.xml">
       <configuration name="FirstTest.CloseSearch" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_CloseSearch - 2019.06.23 at 12h 21m 05s.xml">
+    <history-entry file="FirstTest_FirstTest - 2019.06.23 at 15h 00m 00s.xml">
+      <configuration name="FirstTest.FirstTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FirstTest_CloseSearch - 2019.06.23 at 15h 01m 59s.xml">
       <configuration name="FirstTest.CloseSearch" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_CloseSearch - 2019.06.23 at 13h 26m 21s.xml">
-      <configuration name="FirstTest.CloseSearch" configurationId="JUnit" />
+    <history-entry file="FirstTest - 2019.06.23 at 15h 14m 32s.xml">
+      <configuration name="FirstTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_CloseSearch - 2019.06.23 at 13h 26m 51s.xml">
-      <configuration name="FirstTest.CloseSearch" configurationId="JUnit" />
+    <history-entry file="FirstTest_testCloseSearch - 2019.06.23 at 15h 24m 04s.xml">
+      <configuration name="FirstTest.testCloseSearch" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_CloseSearch - 2019.06.23 at 13h 28m 13s.xml">
-      <configuration name="FirstTest.CloseSearch" configurationId="JUnit" />
+    <history-entry file="FirstTest_testSearch - 2019.06.23 at 15h 25m 45s.xml">
+      <configuration name="FirstTest.testSearch" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_CloseSearch - 2019.06.23 at 13h 28m 42s.xml">
-      <configuration name="FirstTest.CloseSearch" configurationId="JUnit" />
+    <history-entry file="FirstTest_testFindArticleAndCheckTitle - 2019.06.23 at 15h 38m 46s.xml">
+      <configuration name="FirstTest.testFindArticleAndCheckTitle" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_CloseSearch - 2019.06.23 at 13h 29m 08s.xml">
-      <configuration name="FirstTest.CloseSearch" configurationId="JUnit" />
+    <history-entry file="FirstTest_testFindArticleAndCheckTitle - 2019.06.23 at 15h 40m 30s.xml">
+      <configuration name="FirstTest.testFindArticleAndCheckTitle" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_CloseSearch - 2019.06.23 at 13h 30m 34s.xml">
-      <configuration name="FirstTest.CloseSearch" configurationId="JUnit" />
+    <history-entry file="FirstTest_testCloseSearch - 2019.06.24 at 20h 37m 29s.xml">
+      <configuration name="FirstTest.testCloseSearch" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_CloseSearch - 2019.06.23 at 13h 31m 08s.xml">
-      <configuration name="FirstTest.CloseSearch" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FirstTest_CloseSearch - 2019.06.23 at 13h 38m 02s.xml">
-      <configuration name="FirstTest.CloseSearch" configurationId="JUnit" />
+    <history-entry file="FirstTest_testFindArticleAndCheckTitle - 2019.06.24 at 20h 38m 34s.xml">
+      <configuration name="FirstTest.testFindArticleAndCheckTitle" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="71" y="-7" width="1472" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27691218" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28541076" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -223,8 +225,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3297587" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3297587" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34986594" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3994638" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -328,10 +330,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="68" column="61" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="61" />
+        <state relative-caret-position="148">
+          <caret line="109" column="23" selection-start-line="109" selection-start-column="23" selection-end-line="109" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1561402779237" expanded="true" signature="1992:2837" ph="..." />
           </folding>
         </state>
       </provider>
@@ -391,7 +394,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -403,7 +405,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.31609195" />
               </list>
             </option>
           </splitter-proportions>
