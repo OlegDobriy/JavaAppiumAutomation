@@ -10,6 +10,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -126,6 +127,38 @@ public class FirstTest
                 "There is still search results",
                 10
         );
+    }
+
+
+    @Test
+    public void testSearchAndValidateResults() {
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find the search field on main screen"
+        );
+
+        waitForElementAndSendKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                "Python",
+                "Cannot find the search field on search screen"
+        );
+
+        List<WebElement> elementsAfterSearch = waitForElementsAndGetList(
+                By.id("org.wikipedia:id/page_list_item_title"),
+                "There is no results",
+                10
+        );
+
+        List<String> listOfResults = getTextFromElementsInList(elementsAfterSearch);
+
+        for (String listItem : listOfResults) {
+            if (listItem.contains("Python")) {
+                assert true;
+            }
+            else {
+                throw new java.lang.Error("Not all results contain the word 'Python'");
+            }
+        }
     }
 
 
@@ -264,12 +297,21 @@ public class FirstTest
         return waitForElementAndClear(by, error_message, 5);
     }
 
-    private List waitForElementsAndGetList(By by, String error_message, long timeoutInSeconds)
+    private List<WebElement> waitForElementsAndGetList(By by, String error_message, long timeoutInSeconds)
     {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
         wait.withMessage(error_message + "\n");
         return wait.until(
                 ExpectedConditions.presenceOfAllElementsLocatedBy(by)
         );
+    }
+
+    private List<String> getTextFromElementsInList(List<WebElement> listOfWebElements) {
+        List<String> resultList = new ArrayList();
+        for (WebElement element : listOfWebElements) {
+            String elementText = element.getAttribute("text");
+            resultList.add(elementText);
+        }
+        return resultList;
     }
 }
