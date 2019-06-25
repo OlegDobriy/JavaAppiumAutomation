@@ -106,7 +106,7 @@ public class FirstTest
                 "Cannot find the search field on search screen"
         );
 
-        List elements_after_search = waitForElementsAndGetList(
+        List elementsAfterSearch = waitForElementsAndGetList(
                 By.id("org.wikipedia:id/page_list_item_title"),
                 "There is no results",
                 10
@@ -114,7 +114,7 @@ public class FirstTest
 
         Assert.assertTrue(
                 "There is less than 2 search results",
-                elements_after_search.size() > 2
+                elementsAfterSearch.size() > 2
         );
 
         waitForElementAndClick(
