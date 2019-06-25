@@ -9,8 +9,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.net.URL;
+import java.util.List;
+
 
 public class FirstTest
 {
@@ -89,7 +90,45 @@ public class FirstTest
         );
     }
 
-    
+
+    @Test
+    public void testSearchAndClose()
+    {
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find the search field on main screen"
+        );
+
+        waitForElementAndSendKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                "Python",
+                "Cannot find the search field on search screen"
+        );
+
+        List elements_after_search = waitForElementsAndGetList(
+                By.id("org.wikipedia:id/page_list_item_title"),
+                "There is no results",
+                10
+        );
+
+        Assert.assertTrue(
+                "There is less than 2 search results",
+                elements_after_search.size() > 2
+        );
+
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_close_btn"),
+                "Cannot find the Close button in the search line"
+        );
+
+        waitForElementNotPresent(
+                By.id("org.wikipedia:id/page_list_item_title"),
+                "There is still search results",
+                10
+        );
+    }
+
+
     @Test
     public void testCheckTextBeforeSearch()
     {
@@ -223,5 +262,14 @@ public class FirstTest
     private WebElement waitForElementAndClear (By by, String error_message)
     {
         return waitForElementAndClear(by, error_message, 5);
+    }
+
+    private List waitForElementsAndGetList(By by, String error_message, long timeoutInSeconds)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+        wait.withMessage(error_message + "\n");
+        return wait.until(
+                ExpectedConditions.presenceOfAllElementsLocatedBy(by)
+        );
     }
 }
