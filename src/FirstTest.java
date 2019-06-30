@@ -296,7 +296,7 @@ public class FirstTest
                     "Cannot find the 'Option' button"
             );
 
-            Thread.sleep(1000);  // тут тоже без sleep'a иногда мисклик по другим кнопкам
+            Thread.sleep(1000);  // ПЕРВЫЙ СЛИП, тут тоже без sleep'a иногда мисклик по другим кнопкам
 
             waitForElementAndClick(
                     By.xpath("//*[@text='Add to reading list']"),
@@ -336,7 +336,7 @@ public class FirstTest
                     "Cannot find the 'My lists' button"
             );
 
-            Thread.sleep(1000);  // без этого иногда тапает не по папке, а по кнопке My list
+            Thread.sleep(1000);  // ВТОРОЙ слип, без этого иногда тапает не по папке, а по кнопке My list
 
             waitForElementAndClick(
                     By.xpath("//android.widget.TextView[@text='" + folderName + "']"),
