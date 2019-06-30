@@ -1,17 +1,24 @@
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.TouchableElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import javax.xml.stream.Location;
 import java.net.URL;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class FirstTest
@@ -225,6 +232,130 @@ public class FirstTest
         );
     }
 
+
+    @Test
+    public void testSwipeArticle() {
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find the search field on main screen"
+        );
+
+        waitForElementAndSendKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                "Appium",
+                "Cannot find the search field on search screen"
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='Appium']"),
+                "Cannot find the search result"
+        );
+
+        waitForElementPresent(
+                By.id("org.wikipedia:id/view_page_title_text"),
+                "Cannot find the title",
+                10
+        );
+
+        swipeUpToFindElement(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_external_link'][@text='View page in browser']"),
+                "Cannot find the end of the article",
+                10
+        );
+    }
+
+        @Test
+        public void testAddFirstArticleToListAndDelete() throws InterruptedException
+        {
+            waitForElementAndClick(
+                    By.id("org.wikipedia:id/search_container"),
+                    "Cannot find the search field on main screen"
+            );
+
+            String articleName = "Appium";
+
+            waitForElementAndSendKeys(
+                    By.id("org.wikipedia:id/search_src_text"),
+                    articleName,
+                    "Cannot find the search field on search screen"
+            );
+
+            waitForElementAndClick(
+                    By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='Appium']"),
+                    "Cannot find the search result"
+            );
+
+            waitForElementPresent(
+                    By.id("org.wikipedia:id/view_page_title_text"),
+                    "Cannot find the title",
+                    10
+            );
+
+            waitForElementAndClick(
+                    By.xpath("//android.widget.ImageView[@content-desc='More options']"),
+                    "Cannot find the 'Option' button"
+            );
+
+            Thread.sleep(1000);  // тут тоже без sleep'a иногда мисклик по другим кнопкам
+
+            waitForElementAndClick(
+                    By.xpath("//*[@text='Add to reading list']"),
+                    "Cannot find the 'Add to list' button"
+            );
+
+            waitForElementAndClick(
+                    By.id("org.wikipedia:id/onboarding_button"),
+                    "Cannot find the 'Ok onboarding' button"
+            );
+
+            waitForElementAndClear(
+                    By.id("org.wikipedia:id/text_input"),
+                    "Cannot find the 'Name for list' field"
+            );
+
+            String folderName = "Autotest";
+
+            waitForElementAndSendKeys(
+                    By.id("org.wikipedia:id/text_input"),
+                    folderName,
+                    "Cannot find the 'Name for list' field"
+            );
+
+            waitForElementAndClick(
+                    By.id("android:id/button1"),
+                    "Cannot find the 'Create list' button"
+            );
+
+            waitForElementAndClick(
+                    By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']"),
+                    "Cannot find the 'Close' button"
+            );
+
+            waitForElementAndClick(
+                    By.xpath("//android.widget.FrameLayout[@content-desc='My lists']"),
+                    "Cannot find the 'My lists' button"
+            );
+
+            Thread.sleep(1000);  // без этого иногда тапает не по папке, а по кнопке My list
+
+            waitForElementAndClick(
+                    By.xpath("//android.widget.TextView[@text='" + folderName + "']"),
+                    "Cannot find the created folder"
+            );
+
+            swipeElementToLeft(
+                    By.xpath("//android.widget.TextView[@text='" + articleName + "']"),
+                    "Cannot find the saved article"
+            );
+
+            waitForElementNotPresent(
+                    By.xpath("//android.widget.TextView[@text='" + articleName + "']"),
+                    "Cannot delete the saved article"
+            );
+        }
+
+
+
     private WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds)
     {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
@@ -306,12 +437,72 @@ public class FirstTest
         );
     }
 
-    private List<String> getTextFromElementsInList(List<WebElement> listOfWebElements) {
+    private List<String> getTextFromElementsInList(List<WebElement> listOfWebElements)
+    {
         List<String> resultList = new ArrayList();
         for (WebElement element : listOfWebElements) {
             String elementText = element.getAttribute("text");
             resultList.add(elementText);
         }
         return resultList;
+    }
+
+    protected void swipeUp (int timeOfSwipe)
+    {
+        TouchAction action = new TouchAction(driver);
+        Dimension size = driver.manage().window().getSize(); // получить размеры устройства
+
+        int x = size.width / 2; // середина устройства по оси x
+        int y_start = (int) (size.height * 0.8);
+        int y_end = (int) (size.height * 0.2);
+
+        action
+                .press(x, y_start)
+                .waitAction(timeOfSwipe)
+                .moveTo(x, y_end)
+                .release()
+                .perform();
+
+    }
+
+    protected void swipeUpQuick ()
+    {
+        swipeUp(200);
+    }
+
+    protected void swipeUpToFindElement(By by, String errorMessage, int maxSwipes)
+    {
+        int alreadySwiped = 0;
+        while (driver.findElements(by).size() == 0) {
+
+            if (alreadySwiped > maxSwipes) {
+                waitForElementPresent(by, "Cannot find the element by swiping. \n" + errorMessage);
+                return;
+            }
+            swipeUpQuick();
+            ++alreadySwiped;
+        }
+    }
+
+    protected void swipeElementToLeft (By by, String errorMessage)
+    {
+        WebElement element = waitForElementPresent(by,
+                errorMessage,
+                5);
+
+        int x_left = element.getLocation().getX(); // координата x эелемента (слева)
+        int x_right = x_left + element.getSize().getWidth(); // координата x эелемента (справа)
+        int y_top = element.getLocation().getY(); // координата y эелемента (сверху)
+        int y_bottom = y_top + element.getSize().getHeight(); // координата y эелемента (снизу)
+        int y_middle = (y_top + y_bottom) / 2; // координата y эелемента (середина)
+
+        TouchAction action = new TouchAction(driver);
+
+        action
+                .press(x_right, y_middle)
+                .waitAction(300)
+                .moveTo(x_left, y_middle)
+                .release()
+                .perform();
     }
 }
