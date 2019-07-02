@@ -519,6 +519,148 @@ public class FirstTest
 
     }
 
+    @Test
+    public void testAddTwoArticlesToListAndDeleteOne() throws InterruptedException
+    {
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find the search field on main screen"
+        );
+
+        String firstArticleName = "Appium";
+
+        waitForElementAndSendKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                firstArticleName,
+                "Cannot find the search field on search screen"
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='" + firstArticleName + "']"),
+                "Cannot find the search result"
+        );
+
+        waitForElementPresent(
+                By.id("org.wikipedia:id/view_page_title_text"),
+                "Cannot find the title",
+                10
+        );
+
+        waitForElementAndClick(
+                By.xpath("//android.widget.ImageView[@content-desc='More options']"),
+                "Cannot find the 'Option' button"
+        );
+
+        Thread.sleep(1000);
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='Add to reading list']"),
+                "Cannot find the 'Add to list' button"
+        );
+
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/onboarding_button"),
+                "Cannot find the 'Ok onboarding' button"
+        );
+
+        waitForElementAndClear(
+                By.id("org.wikipedia:id/text_input"),
+                "Cannot find the 'Name for list' field"
+        );
+
+        String folderName = "Autotest";
+
+        waitForElementAndSendKeys(
+                By.id("org.wikipedia:id/text_input"),
+                folderName,
+                "Cannot find the 'Name for list' field"
+        );
+
+        waitForElementAndClick(
+                By.id("android:id/button1"),
+                "Cannot find the 'Create list' button"
+        );
+
+        waitForElementAndClick(
+                By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']"),
+                "Cannot find the 'Close' button after adding the first article " + firstArticleName
+        );
+
+
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find the search field on main screen"
+        );
+
+        String secondArticleName = "Java";
+
+        waitForElementAndSendKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                secondArticleName,
+                "Cannot find the search field on search screen"
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='" + secondArticleName + "']"),
+                "Cannot find the search result"
+        );
+
+        waitForElementPresent(
+                By.id("org.wikipedia:id/view_page_title_text"),
+                "Cannot find the title",
+                10
+        );
+
+        waitForElementAndClick(
+                By.xpath("//android.widget.ImageView[@content-desc='More options']"),
+                "Cannot find the 'Option' button"
+        );
+
+        Thread.sleep(1000);
+
+        waitForElementAndClick(
+                By.xpath("//*[@text='Add to reading list']"),
+                "Cannot find the 'Add to list' button"
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@resource-id='org.wikipedia:id/item_title'][@text='" + folderName +"']"),
+                "Cannot find created folder " + folderName
+        );
+
+        waitForElementAndClick(
+                By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']"),
+                "Cannot find the 'Close' button after adding the second article " + secondArticleName
+        );
+
+        waitForElementAndClick(
+                By.xpath("//android.widget.FrameLayout[@content-desc='My lists']"),
+                "Cannot find the 'My lists' button"
+        );
+
+        Thread.sleep(1000);
+
+        waitForElementAndClick(
+                By.xpath("//android.widget.TextView[@text='" + folderName + "']"),
+                "Cannot find the created folder"
+        );
+
+        swipeElementToLeft(
+                By.xpath("//android.widget.TextView[@text='" + firstArticleName + "']"),
+                "Cannot find the saved article"
+        );
+
+        waitForElementNotPresent(
+                By.xpath("//android.widget.TextView[@text='" + firstArticleName + "']"),
+                "Cannot delete the first saved article " + firstArticleName
+        );
+
+        waitForElementPresent(
+                By.xpath("//android.widget.TextView[@text='" + secondArticleName + "']"),
+                "Cannot find the second saved article " + secondArticleName
+        );
+    }
+
 
 
 
