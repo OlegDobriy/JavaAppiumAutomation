@@ -157,14 +157,20 @@ public class FirstTest
         );
 
         List<String> listOfResults = getTextFromElementsInList(elementsAfterSearch);
+        int wrongResultCount = 0;
 
         for (String listItem : listOfResults) {
             if (listItem.contains("Python")) {
                 assert true;
             }
             else {
-                throw new java.lang.Error("Not all results contain the word 'Python'");
+                System.out.println("The title '" + listItem + "' does not contain the word 'Python'");
+                ++wrongResultCount;
             }
+        }
+
+        if (wrongResultCount > 0) {
+                throw new java.lang.Error("Not all results contain the word 'Python'. Quantity of wrong topics is " + wrongResultCount);
         }
     }
 
