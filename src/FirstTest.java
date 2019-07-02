@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -360,6 +361,165 @@ public class FirstTest
             );
         }
 
+    @Test
+    public void testAmountOfNonEmptySearch()
+    {
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find the search field on main screen"
+        );
+
+        String articleName = "Linkin Park discography";
+
+        waitForElementAndSendKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                articleName,
+                "Cannot find the search field on search screen"
+        );
+
+        String searchResultLocator = "//*[@resource-id='org.wikipedia:id/search_results_list']/*[@resource-id='org.wikipedia:id/page_list_item_container']";
+
+        waitForElementPresent(
+                By.xpath(searchResultLocator),
+                "Cannot find results for request: " + articleName,
+                10
+        );
+
+        int amountOfSearchResults = getAmountOfElements(
+                By.xpath(searchResultLocator)
+        );
+
+        Assert.assertTrue(
+                "There are too few search results",
+                amountOfSearchResults > 0
+        );
+    }
+
+    @Test
+    public void testAmountOfEmptySearch() throws InterruptedException
+    {
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find the search field on main screen"
+        );
+
+        String searchRequest = "sgsgsgsgsgsg";
+
+        waitForElementAndSendKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                searchRequest,
+                "Cannot find the search field on search screen"
+        );
+
+        String searchResultLocator = "//*[@resource-id='org.wikipedia:id/search_results_list']/*[@resource-id='org.wikipedia:id/page_list_item_container']";
+        String noResultsFoundLocator = "//*[@text='No results found']";
+
+        waitForElementPresent(
+                By.xpath(noResultsFoundLocator),
+                "'No results' label was't found for request: " + searchRequest
+        );
+
+        Thread.sleep(1000);
+
+        assertElementNotPresent(
+                By.xpath(searchResultLocator),
+                "Search results exist for request: " + searchRequest
+        );
+    }
+
+    @Test
+    public void testRotateAfterSearchAndCheckTitle()
+    {
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find the search field on main screen"
+        );
+
+        String searchRequest = "Appium";
+
+        waitForElementAndSendKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                searchRequest,
+                "Cannot find the search field on search screen"
+        );
+
+        String searchResult = "//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='" + searchRequest + "']";
+
+        waitForElementAndClick(
+                By.xpath(searchResult),
+                "Cannot find the search result for request: " + searchRequest
+        );
+
+        String titleBeforeRotation = waitForElelementAndGetAttribute(
+                By.id("org.wikipedia:id/view_page_title_text"),
+                "text",
+                "Cannot find the article title",
+                5
+        );
+
+        driver.rotate(ScreenOrientation.LANDSCAPE);
+
+        String titleAfterRotation = waitForElelementAndGetAttribute(
+                By.id("org.wikipedia:id/view_page_title_text"),
+                "text",
+                "Cannot find the article title",
+                5
+        );
+
+        Assert.assertEquals(
+                "Article title is different after rotation",
+                titleBeforeRotation,
+                titleAfterRotation
+        );
+
+        driver.rotate(ScreenOrientation.PORTRAIT);
+
+        String titleAfterSecondRotation = waitForElelementAndGetAttribute(
+                By.id("org.wikipedia:id/view_page_title_text"),
+                "text",
+                "Cannot find the article title",
+                5
+        );
+
+        Assert.assertEquals(
+                "Article title is different after rotation",
+                titleBeforeRotation,
+                titleAfterSecondRotation
+        );
+    }
+
+    @Test
+    public void testTurnToBackgroundAfterSearchAndCheckTitle() {
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find the search field on main screen"
+        );
+
+        String searchRequest = "Appium";
+
+        waitForElementAndSendKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                searchRequest,
+                "Cannot find the search field on search screen"
+        );
+
+        String searchResult = "//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='" + searchRequest + "']";
+
+        waitForElementPresent(
+                By.xpath(searchResult),
+                "Cannot find the search result for request: " + searchRequest
+        );
+
+        driver.runAppInBackground(2);
+
+        waitForElementPresent(
+                By.xpath(searchResult),
+                "Cannot find the search result after returning from background"
+        );
+
+    }
+
+
 
 
     private WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds)
@@ -510,5 +670,26 @@ public class FirstTest
                 .moveTo(x_left, y_middle)
                 .release()
                 .perform();
+    }
+
+    private int getAmountOfElements(By by)
+    {
+        List elements = driver.findElements(by);
+        return elements.size();
+    }
+
+    private void assertElementNotPresent(By by, String errorMessage)
+    {
+        int amountOfElements = getAmountOfElements(by);
+        if (amountOfElements > 0) {
+            String defaultMessage = "An element '" + by.toString() + "' should not be presented";
+            throw new AssertionError(defaultMessage + " " + errorMessage);
+        }
+    }
+
+    private String waitForElelementAndGetAttribute (By by, String attribute, String errorMessage, long timeoutInSeconds)
+    {
+        WebElement element = waitForElementPresent(by, errorMessage, timeoutInSeconds);
+        return element.getAttribute(attribute);
     }
 }
