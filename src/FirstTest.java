@@ -543,7 +543,7 @@ public class FirstTest
         waitForElementPresent(
                 By.id("org.wikipedia:id/view_page_title_text"),
                 "Cannot find the title",
-                10
+                15
         );
 
         waitForElementAndClick(
@@ -608,7 +608,7 @@ public class FirstTest
         waitForElementPresent(
                 By.id("org.wikipedia:id/view_page_title_text"),
                 "Cannot find the title",
-                10
+                15
         );
 
         waitForElementAndClick(

@@ -21,14 +21,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="516" column="78" selection-start-line="516" selection-start-column="78" selection-end-line="516" selection-end-column="78" />
+            <state relative-caret-position="213">
+              <caret line="663" column="89" lean-forward="true" selection-start-line="663" selection-start-column="89" selection-end-line="663" selection-end-column="89" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1586#1587#0" expanded="true" />
                 <element signature="e#1615#1616#0" expanded="true" />
-                <element signature="e#20391#20392#0" expanded="true" />
-                <marker date="1562089232162" expanded="true" signature="2311:3156" ph="..." />
+                <element signature="e#25646#25647#0" expanded="true" />
+                <marker date="1562093513054" expanded="true" signature="2311:3156" ph="..." />
               </folding>
             </state>
           </provider>
@@ -49,6 +49,9 @@
       <find>Cannot find the 'Close' button</find>
       <find>new ArrayList</find>
       <find>new ArrayList()</find>
+      <find>assert</find>
+      <find>getAttribute</find>
+      <find>org.wikipedia:id/view_page_title_text</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -119,7 +122,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.FirstTest.testTurnToBackgroundAfterSearchAndCheckTitle">
+  <component name="RunManager" selected="JUnit.FirstTest.testAddTwoArticlesToListAndDeleteOne">
     <configuration name="FirstTest.testAddFirstArticleToListAndDelete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation" />
       <option name="PACKAGE_NAME" value="" />
@@ -130,11 +133,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FirstTest.testAmountOfEmptySearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FirstTest.testAddTwoArticlesToListAndDeleteOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="FirstTest" />
-      <option name="METHOD_NAME" value="testAmountOfEmptySearch" />
+      <option name="METHOD_NAME" value="testAddTwoArticlesToListAndDeleteOne" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -172,11 +175,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FirstTest.testAddTwoArticlesToListAndDeleteOne" />
         <item itemvalue="JUnit.FirstTest.testTurnToBackgroundAfterSearchAndCheckTitle" />
         <item itemvalue="JUnit.FirstTest.testSearchAndValidateResults" />
         <item itemvalue="JUnit.FirstTest.testAddFirstArticleToListAndDelete" />
         <item itemvalue="JUnit.FirstTest.testRotateAfterSearchAndCheckTitle" />
-        <item itemvalue="JUnit.FirstTest.testAmountOfEmptySearch" />
       </list>
     </recent_temporary>
   </component>
@@ -194,35 +197,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FirstTest_testSearchAndValidateResults - 2019.07.02 at 20h 11m 44s.xml">
-      <configuration name="FirstTest.testSearchAndValidateResults" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesToListAndDeleteOne - 2019.07.02 at 21h 29m 43s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesToListAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testSearchAndValidateResults - 2019.07.02 at 20h 13m 02s.xml">
-      <configuration name="FirstTest.testSearchAndValidateResults" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesToListAndDeleteOne - 2019.07.02 at 21h 31m 12s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesToListAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testSearchAndValidateResults - 2019.07.02 at 20h 13m 43s.xml">
-      <configuration name="FirstTest.testSearchAndValidateResults" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesToListAndDeleteOne - 2019.07.02 at 21h 34m 09s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesToListAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testSearchAndValidateResults - 2019.07.02 at 20h 14m 45s.xml">
-      <configuration name="FirstTest.testSearchAndValidateResults" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesToListAndDeleteOne - 2019.07.02 at 21h 38m 24s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesToListAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testSearchAndValidateResults - 2019.07.02 at 20h 16m 04s.xml">
-      <configuration name="FirstTest.testSearchAndValidateResults" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesToListAndDeleteOne - 2019.07.02 at 21h 42m 04s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesToListAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testSearchAndValidateResults - 2019.07.02 at 20h 17m 23s.xml">
-      <configuration name="FirstTest.testSearchAndValidateResults" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesToListAndDeleteOne - 2019.07.02 at 21h 45m 55s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesToListAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testSearchAndValidateResults - 2019.07.02 at 20h 19m 22s.xml">
-      <configuration name="FirstTest.testSearchAndValidateResults" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesToListAndDeleteOne - 2019.07.02 at 21h 48m 21s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesToListAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testSearchAndValidateResults - 2019.07.02 at 20h 20m 10s.xml">
-      <configuration name="FirstTest.testSearchAndValidateResults" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesToListAndDeleteOne - 2019.07.02 at 21h 50m 36s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesToListAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testSearchAndValidateResults - 2019.07.02 at 20h 20m 53s.xml">
-      <configuration name="FirstTest.testSearchAndValidateResults" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesToListAndDeleteOne - 2019.07.02 at 21h 51m 49s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesToListAndDeleteOne" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testTurnToBackgroundAfterSearchAndCheckTitle - 2019.07.02 at 20h 39m 41s.xml">
-      <configuration name="FirstTest.testTurnToBackgroundAfterSearchAndCheckTitle" configurationId="JUnit" />
+    <history-entry file="FirstTest_testAddTwoArticlesToListAndDeleteOne - 2019.07.02 at 21h 53m 50s.xml">
+      <configuration name="FirstTest.testAddTwoArticlesToListAndDeleteOne" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -238,7 +241,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3297587" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31769437" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30965146" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.54825735" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -262,7 +265,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/FirstTest.java</url>
-          <line>682</line>
+          <line>835</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -392,14 +395,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="516" column="78" selection-start-line="516" selection-start-column="78" selection-end-line="516" selection-end-column="78" />
+        <state relative-caret-position="213">
+          <caret line="663" column="89" lean-forward="true" selection-start-line="663" selection-start-column="89" selection-end-line="663" selection-end-column="89" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1586#1587#0" expanded="true" />
             <element signature="e#1615#1616#0" expanded="true" />
-            <element signature="e#20391#20392#0" expanded="true" />
-            <marker date="1562089232162" expanded="true" signature="2311:3156" ph="..." />
+            <element signature="e#25646#25647#0" expanded="true" />
+            <marker date="1562093513054" expanded="true" signature="2311:3156" ph="..." />
           </folding>
         </state>
       </provider>
