@@ -659,6 +659,17 @@ public class FirstTest
                 By.xpath("//android.widget.TextView[@text='" + secondArticleName + "']"),
                 "Cannot find the second saved article " + secondArticleName
         );
+
+        waitForElementAndClick(
+                By.xpath("//android.widget.TextView[@text='" + secondArticleName + "']"),
+                "Cannot find the second saved article " + secondArticleName
+        );
+
+        waitForElementPresent(
+                By.xpath("//*[@resource-id='org.wikipedia:id/view_page_title_text'][@text='" + secondArticleName + "']"),
+                "Cannot find the title for the second article " + secondArticleName,
+                15
+        );
     }
 
 
