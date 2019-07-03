@@ -671,6 +671,21 @@ public class FirstTest
         );
     }
 
+    @Test
+    public void testCheckArticleTitleWithoutWait()
+    {
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find the search field on main screen"
+        );
+
+        String searchRequest = "Appium";
+
+        waitForElementAndSendKeys(
+                By.id("org.wikipedia:id/search_src_text"),
+                searchRequest,
+                "Cannot find the search field on search screen"
+        );
 
         waitForElementAndClick(
                 By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='" + searchRequest + "']"),
@@ -854,5 +869,14 @@ public class FirstTest
         WebElement element = waitForElementPresent(by, errorMessage, timeoutInSeconds);
 
         return element.getAttribute(attribute);
+    }
+
+    private boolean assertElementPresent(By by, String errorMessage)
+    {
+        int amountOfElements = getAmountOfElements(by);
+
+        if (amountOfElements == 0)
+            throw new AssertionError("Cannot find the element: " + by.toString() + ". " + errorMessage);
+        else return true;
     }
 }
