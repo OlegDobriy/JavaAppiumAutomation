@@ -48,7 +48,7 @@ public class FirstTest
         driver.quit();
     }
 
-    @Test
+//    @Test
     public void testSearch()
     {
         waitForElementAndClick(
@@ -68,8 +68,7 @@ public class FirstTest
         );
     }
 
-
-    @Test
+//  @Test
     public void testCloseSearch()
     {
         waitForElementAndClick(
@@ -100,7 +99,7 @@ public class FirstTest
     }
 
 
-    @Test
+//  @Test
     public void testSearchAndClose()
     {
         waitForElementAndClick(
@@ -138,7 +137,7 @@ public class FirstTest
     }
 
 
-    @Test
+//    @Test
     public void testSearchAndValidateResults() {
         waitForElementAndClick(
                 By.id("org.wikipedia:id/search_container"),
@@ -176,7 +175,7 @@ public class FirstTest
     }
 
 
-    @Test
+//    @Test
     public void testCheckTextBeforeSearch()
     {
         waitForElementAndClick(
@@ -205,7 +204,7 @@ public class FirstTest
     }
 
 
-    @Test
+//    @Test
     public void testFindArticleAndCheckTitle()
     {
         waitForElementAndClick(
@@ -240,7 +239,7 @@ public class FirstTest
     }
 
 
-    @Test
+//    @Test
     public void testSwipeArticle() {
         waitForElementAndClick(
                 By.id("org.wikipedia:id/search_container"),
@@ -271,7 +270,7 @@ public class FirstTest
         );
     }
 
-        @Test
+//        @Test
         public void testAddFirstArticleToListAndDelete() throws InterruptedException
         {
             waitForElementAndClick(
@@ -361,7 +360,7 @@ public class FirstTest
             );
         }
 
-    @Test
+//    @Test
     public void testAmountOfNonEmptySearch()
     {
         waitForElementAndClick(
@@ -395,7 +394,7 @@ public class FirstTest
         );
     }
 
-    @Test
+//    @Test
     public void testAmountOfEmptySearch() throws InterruptedException
     {
         waitForElementAndClick(
@@ -454,7 +453,7 @@ public class FirstTest
                 By.id("org.wikipedia:id/view_page_title_text"),
                 "text",
                 "Cannot find the article title",
-                5
+                15
         );
 
         driver.rotate(ScreenOrientation.LANDSCAPE);
@@ -463,7 +462,7 @@ public class FirstTest
                 By.id("org.wikipedia:id/view_page_title_text"),
                 "text",
                 "Cannot find the article title",
-                5
+                15
         );
 
         Assert.assertEquals(
@@ -472,20 +471,20 @@ public class FirstTest
                 titleAfterRotation
         );
 
-        driver.rotate(ScreenOrientation.PORTRAIT);
-
-        String titleAfterSecondRotation = waitForElelementAndGetAttribute(
-                By.id("org.wikipedia:id/view_page_title_text"),
-                "text",
-                "Cannot find the article title",
-                5
-        );
-
-        Assert.assertEquals(
-                "Article title is different after rotation",
-                titleBeforeRotation,
-                titleAfterSecondRotation
-        );
+//        driver.rotate(ScreenOrientation.PORTRAIT);
+//
+//        String titleAfterSecondRotation = waitForElelementAndGetAttribute(
+//                By.id("org.wikipedia:id/view_page_title_text"),
+//                "text",
+//                "Cannot find the article title",
+//                5
+//        );
+//
+//        Assert.assertEquals(
+//                "Article title is different after rotation",
+//                titleBeforeRotation,
+//                titleAfterSecondRotation
+//        );
     }
 
     @Test
@@ -519,7 +518,7 @@ public class FirstTest
 
     }
 
-    @Test
+//    @Test
     public void testAddTwoArticlesToListAndDeleteOne() throws InterruptedException
     {
         waitForElementAndClick(
@@ -673,6 +672,16 @@ public class FirstTest
     }
 
 
+        waitForElementAndClick(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='" + searchRequest + "']"),
+                "Cannot find the search result"
+        );
+
+        assertElementPresent(
+                By.xpath("//*[@resource-id='org.wikipedia:id/view_page_title_text'][@text='" + searchRequest + "']"),
+                "Cannot find the title for the request: '" + searchRequest + "'"
+        );
+    }
 
 
     private WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds)
@@ -843,6 +852,7 @@ public class FirstTest
     private String waitForElelementAndGetAttribute (By by, String attribute, String errorMessage, long timeoutInSeconds)
     {
         WebElement element = waitForElementPresent(by, errorMessage, timeoutInSeconds);
+
         return element.getAttribute(attribute);
     }
 }
