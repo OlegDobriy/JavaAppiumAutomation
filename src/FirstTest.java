@@ -68,6 +68,14 @@ public class FirstTest extends CoreTestCase
         );
 
         Assert.assertTrue(
+    public void testSearchAndClose() throws InterruptedException  // ex8
+  {
+        String searchRequest = "Python";
+        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject.initSearchInput();
+        SearchPageObject.fillSearchField(searchRequest);
+        int quantityOfSearchResults = SearchPageObject.getAmountOfFoundResults();
+        assertTrue(
                 "There is less than 2 search results",
                 elementsAfterSearch.size() > 2
         );
@@ -81,7 +89,10 @@ public class FirstTest extends CoreTestCase
                 By.id("org.wikipedia:id/page_list_item_title"),
                 "There is still search results",
                 10
+                quantityOfSearchResults > 2
         );
+        SearchPageObject.clickSearchCancelButton();
+        SearchPageObject.assertThereIsNoResultAfterSearch();
     }
 
 
@@ -443,6 +454,7 @@ public class FirstTest extends CoreTestCase
 
     @Test
     public void testAddTwoArticlesToListAndDeleteOne() throws InterruptedException
+    public void testAddTwoArticlesToListAndDeleteOne() throws InterruptedException  // ex8
     {
         MainPageObject.waitForElementAndClick(
                 By.id("org.wikipedia:id/search_container"),
@@ -591,6 +603,34 @@ public class FirstTest extends CoreTestCase
                 "Cannot find the title for the second article " + secondArticleName,
                 15
         );
+        String
+                firstSearchRequest = "Appium",
+                secondSearchRequest = "Method",
+                folderName = "testAddTwoArticlesToListAndDeleteOne";
+        // first article
+        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject.initSearchInput();
+        SearchPageObject.fillSearchField(firstSearchRequest);
+        SearchPageObject.waitForSearchResultByTitle(firstSearchRequest);
+        SearchPageObject.waitForSearchResultAndClick(firstSearchRequest);
+        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
+        ArticlePageObject.createListAndAddArticle(folderName);
+        ArticlePageObject.closeArticle();
+        // second article
+        SearchPageObject.initSearchInput();
+        SearchPageObject.fillSearchField(secondSearchRequest);
+        SearchPageObject.waitForSearchResultByTitle(secondSearchRequest);
+        SearchPageObject.waitForSearchResultAndClick(secondSearchRequest);
+        ArticlePageObject.addArticleToExistedList(folderName);
+        ArticlePageObject.closeArticle();
+        NavigationUI NavigationUI = new NavigationUI(driver);
+        // my list
+        NavigationUI.openMyList();
+        MyListsPageObject MyListsPageObject = new MyListsPageObject(driver);
+        MyListsPageObject.openMyFolderByName(folderName);
+        MyListsPageObject.swipeArticleToDelete(firstSearchRequest);
+        MyListsPageObject.waitForArticleToDisappearInMyLists(firstSearchRequest);
+        MyListsPageObject.checkArticleTitleByName(secondSearchRequest);
     }
 
     @Test
@@ -600,13 +640,24 @@ public class FirstTest extends CoreTestCase
                 "Cannot find the search field on main screen"
         );
 
+    @Test
+    public void testCheckArticleTitleWithoutWait()  // ex8
+    {
         String searchRequest = "Appium";
+        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject.initSearchInput();
+        SearchPageObject.fillSearchField(searchRequest);
+        SearchPageObject.waitForSearchResultByTitle(searchRequest);
+        SearchPageObject.waitForSearchResultAndClick(searchRequest);
+        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
+        ArticlePageObject.checkTitleWithoutWait();
 
         MainPageObject.waitForElementAndSendKeys(
                 By.id("org.wikipedia:id/search_src_text"),
                 searchRequest,
                 "Cannot find the search field on search screen"
         );
+    }
 
         MainPageObject.waitForElementAndClick(
                 By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='" + searchRequest + "']"),
