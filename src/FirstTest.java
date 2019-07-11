@@ -668,5 +668,15 @@ public class FirstTest extends CoreTestCase
                 By.xpath("//*[@resource-id='org.wikipedia:id/view_page_title_text'][@text='" + searchRequest + "']"),
                 "Cannot find the title for the request: '" + searchRequest + "'"
         );
+    @Test
+    public void testSearchAndCheckResultByTitleAndDescription()  // ex9*
+    {
+        String
+                title = "Java",
+                description = "Island of Indonesia";
+        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject.initSearchInput();
+        SearchPageObject.fillSearchField(title);
+        SearchPageObject.waitForSearchResultByTitleAndDescription(title, description);
     }
 }
