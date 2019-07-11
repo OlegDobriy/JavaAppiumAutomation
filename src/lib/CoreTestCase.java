@@ -13,13 +13,12 @@ public class CoreTestCase extends TestCase
     protected AppiumDriver driver;
     private static String AppiumURL = "http://127.0.0.1:4723/wd/hub";
 
+
     @Override
     protected void setUp() throws Exception
     {
         super.setUp(); // использовать setUp из TestCase
-
         DesiredCapabilities capabilities = new DesiredCapabilities();
-
         capabilities.setCapability("platformName","Android");
         capabilities.setCapability("deviceName","AndroidTestDevice");
         capabilities.setCapability("platformVersion","6.0");
@@ -27,11 +26,10 @@ public class CoreTestCase extends TestCase
         capabilities.setCapability("appPackage","org.wikipedia");
         capabilities.setCapability("appActivity",".main.MainActivity");
         capabilities.setCapability("app","D:\\JavaAppiumAutomation\\apks\\org.wikipedia.apk");
-
         driver = new AndroidDriver(new URL(AppiumURL), capabilities);
-
-        driver.rotate(ScreenOrientation.PORTRAIT);  // всегда начинать тесты с портретной ориентации
+        this.rotateToPortrait();  // всегда начинать тесты с портретной ориентации
     }
+
 
     @Override
     protected void tearDown() throws Exception
@@ -39,5 +37,23 @@ public class CoreTestCase extends TestCase
         driver.quit();
 
         super.tearDown(); // использовать tearDown из TestCase
+    }
+
+
+    protected void rotateToPortrait()
+    {
+        driver.rotate(ScreenOrientation.PORTRAIT);
+    }
+
+
+    protected void rotateToLandscape()
+    {
+        driver.rotate(ScreenOrientation.LANDSCAPE);
+    }
+
+
+    protected void backgroundApp(int seconds)
+    {
+        driver.runAppInBackground(seconds);
     }
 }
