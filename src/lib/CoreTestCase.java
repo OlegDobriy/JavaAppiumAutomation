@@ -25,9 +25,9 @@ public class CoreTestCase extends TestCase
         capabilities.setCapability("automationName","Appium");
         capabilities.setCapability("appPackage","org.wikipedia");
         capabilities.setCapability("appActivity",".main.MainActivity");
-        capabilities.setCapability("app","D:\\JavaAppiumAutomation\\apks\\org.wikipedia.apk");
+        capabilities.setCapability("orientation", "PORTRAIT"); // всегда начинать тесты с портретной ориентации
+        capabilities.setCapability("app",System.getProperty("user.dir") + "\\apks\\org.wikipedia.apk");
         driver = new AndroidDriver(new URL(AppiumURL), capabilities);
-        this.rotateToPortrait();  // всегда начинать тесты с портретной ориентации
     }
 
 
