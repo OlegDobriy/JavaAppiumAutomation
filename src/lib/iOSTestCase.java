@@ -20,8 +20,7 @@ public class iOSTestCase extends TestCase
     protected void setUp() throws Exception
     {
         super.setUp(); // использовать setUp из TestCase
-        CoreTestCase CoreTestCase = new CoreTestCase();
-        DesiredCapabilities capabilities = CoreTestCase.getCapabilitiesByPlatformEnv();
+        DesiredCapabilities capabilities = this.getCapabilitiesByPlatformEnv();
         driver = new IOSDriver(new URL(AppiumURL), capabilities);
     }
 
