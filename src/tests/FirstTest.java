@@ -74,12 +74,12 @@ public class FirstTest extends CoreTestCase
     public void testCheckTextBeforeSearch()
     {
         MainPageObject.waitForElementAndClick(
-                By.id("org.wikipedia:id/search_container"),
+                "id:org.wikipedia:id/search_container",
                 "Cannot find the search field on main screen"
         );
 
         WebElement element = MainPageObject.waitForElementPresent(
-                By.id("org.wikipedia:id/search_src_text"),
+                "id:org.wikipedia:id/search_src_text",
                 "Cannot find the search field on search screen"
         );
 
@@ -92,7 +92,7 @@ public class FirstTest extends CoreTestCase
         );
 
         MainPageObject.waitForElementAndSendKeys(
-                By.id("org.wikipedia:id/search_src_text"),
+                "id:org.wikipedia:id/search_src_text",
                 "Java",
                 "Cannot find the search field on search screen"
         );

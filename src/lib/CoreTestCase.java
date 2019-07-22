@@ -55,7 +55,7 @@ public class CoreTestCase extends TestCase
     }
 
 
-    private DesiredCapabilities getCapabilitiesByPlatformEnv() throws Exception
+    public DesiredCapabilities getCapabilitiesByPlatformEnv() throws Exception
     {
         String platform = System.getenv("PLATFORM"); // получить параметр запуска
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -75,7 +75,7 @@ public class CoreTestCase extends TestCase
         {
             capabilities.setCapability("platformName","iOS");
             capabilities.setCapability("deviceName","iPhone SE");
-            capabilities.setCapability("platformVersion","11.3");
+            capabilities.setCapability("platformVersion","10.3");
             capabilities.setCapability("orientation", "PORTRAIT"); // всегда начинать тесты с портретной ориентации
             capabilities.setCapability("app",System.getProperty("user.dir") + "/apks/Wikipedia.app");
         }

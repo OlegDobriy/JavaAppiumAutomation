@@ -1,16 +1,16 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.By;
+
 
 public class MyListsPageObject extends MainPageObject
 {
 
     private static final String
-            FOLDER_BY_NAME_TPL = "//android.widget.TextView[@text='{FOLDER_NAME}']",
-            ARTICLE_IN_MY_LISTS_BY_NAME_TPL = "//android.widget.TextView[@text='{ARTICLE_TITLE}']",
-            ARTICLE_TITLE_ON_ARTICLE_SCREEN_BY_NAME_TPL = "//*[@resource-id='org.wikipedia:id/view_page_title_text'][@text='{ARTICLE_TITLE}']",
-            SEARCH_BUTTON = "org.wikipedia:id/menu_search_lists";
+            FOLDER_BY_NAME_TPL = "xpath://android.widget.TextView[@text='{FOLDER_NAME}']",
+            ARTICLE_IN_MY_LISTS_BY_NAME_TPL = "xpath://android.widget.TextView[@text='{ARTICLE_TITLE}']",
+            ARTICLE_TITLE_ON_ARTICLE_SCREEN_BY_NAME_TPL = "xpath://*[@resource-id='org.wikipedia:id/view_page_title_text'][@text='{ARTICLE_TITLE}']",
+            SEARCH_BUTTON = "id:org.wikipedia:id/menu_search_lists";
 
 
     /* TEMPLATE METHODS */
@@ -40,11 +40,11 @@ public class MyListsPageObject extends MainPageObject
 
     public void openMyFolderByName (String folderName) throws InterruptedException
     {
-        this.checkElementIsMoving(By.id(SEARCH_BUTTON));
+        this.checkElementIsMoving(SEARCH_BUTTON);
 
         String folderXpath = getFolderXpathInMyLists(folderName);
         this.waitForElementAndClick(
-                By.xpath(folderXpath),
+                folderXpath,
                 "Cannot find the created folder"
         );
     }
@@ -54,7 +54,7 @@ public class MyListsPageObject extends MainPageObject
         this.waitForArticleToAppearInMyLists(articleTitle);
         String articleXpath = getArticleXpathInMyLists(articleTitle);
         this.swipeElementToLeft(
-                By.xpath(articleXpath),
+                articleXpath,
                 "Cannot find the saved article"
         );
     }
@@ -63,7 +63,7 @@ public class MyListsPageObject extends MainPageObject
     {
         String articleXpath = getArticleXpathInMyLists(articleTitle);
         this.waitForElementPresent(
-                By.xpath(articleXpath),
+                articleXpath,
                 "Article doesn't present. Article name is " + articleTitle);
     }
 
@@ -71,7 +71,7 @@ public class MyListsPageObject extends MainPageObject
     {
         String articleXpath = getArticleXpathInMyLists(articleName);
         this.waitForElementNotPresent(
-                By.xpath(articleXpath),
+                articleXpath,
                 "Article is still present. Article name is " + articleName);
     }
 
@@ -79,11 +79,11 @@ public class MyListsPageObject extends MainPageObject
     {
         String articleXpath = getArticleXpathInMyLists(articleTitle);
         this.waitForElementAndClick(
-                By.xpath(articleXpath),
+                articleXpath,
                 "Article doesn't present in the folder. Expected article: " + articleTitle);
         String articleTitleXpath = getArticleXpathOnArticleScreen(articleTitle);
         this.waitForElementPresent(
-                By.xpath(articleTitleXpath),
+                articleTitleXpath,
                 "Cannot find the article title. Expected article: " + articleTitle,
                 15
         );
