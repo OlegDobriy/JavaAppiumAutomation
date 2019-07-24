@@ -2,8 +2,8 @@ package tests;
 
 import lib.CoreTestCase;
 import lib.ui.*;
+import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 
@@ -22,7 +22,7 @@ public class FirstTest extends CoreTestCase
     @Test
     public void testSearchAndVerifyResult()
     {
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.fillSearchField("Java");
         SearchPageObject.waitForSearchResultByTitle("Java (programming language)");
@@ -32,7 +32,7 @@ public class FirstTest extends CoreTestCase
     @Test
     public void testCloseSearch()
     {
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.fillSearchField("Java");
         SearchPageObject.waitForSearchCancelButtonToAppear();
@@ -46,7 +46,7 @@ public class FirstTest extends CoreTestCase
     public void testSearchAndClose() throws InterruptedException  // ex8
   {
         String searchRequest = "Python";
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.fillSearchField(searchRequest);
         int quantityOfSearchResults = SearchPageObject.getAmountOfFoundResults();
@@ -63,7 +63,7 @@ public class FirstTest extends CoreTestCase
     public void testSearchAndValidateResults()
     {
         String searchRequest = "Python";
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.fillSearchField(searchRequest);
         SearchPageObject.checkAllResultsContainSearchRequest(searchRequest);
@@ -102,7 +102,7 @@ public class FirstTest extends CoreTestCase
     @Test
     public void testFindArticleAndCheckTitle()
     {
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.fillSearchField("Java");
         SearchPageObject.waitForSearchResultByTitle("Java (programming language)");
@@ -120,7 +120,7 @@ public class FirstTest extends CoreTestCase
     @Test
     public void testSwipeArticle()
     {
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.fillSearchField("Appium");
         SearchPageObject.waitForSearchResultByTitle("Appium");
@@ -136,7 +136,7 @@ public class FirstTest extends CoreTestCase
         {
             String searchRequest = "Java (programming language)";
             String folderName = "test: add to my list and delete";
-            SearchPageObject SearchPageObject = new SearchPageObject(driver);
+            SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
             SearchPageObject.initSearchInput();
             SearchPageObject.fillSearchField(searchRequest);
             SearchPageObject.waitForSearchResultByTitle(searchRequest);
@@ -157,7 +157,7 @@ public class FirstTest extends CoreTestCase
     public void testAmountOfNonEmptySearch()
     {
         String searchRequest = "Linkin Park discography";
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.fillSearchField(searchRequest);
         SearchPageObject.waitForSearchResultByTitle(searchRequest);
@@ -173,7 +173,7 @@ public class FirstTest extends CoreTestCase
     public void testAmountOfEmptySearch() throws InterruptedException
     {
         String searchRequest = "sgsgsgsgsgsg";
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.fillSearchField(searchRequest);
         SearchPageObject.waitForEmptyResultLabel();
@@ -184,7 +184,7 @@ public class FirstTest extends CoreTestCase
     @Test
     public void testRotateAfterSearchAndCheckTitle()
     {
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.fillSearchField("Java");
         SearchPageObject.waitForSearchResultByTitle("Java (programming language)");
@@ -211,7 +211,7 @@ public class FirstTest extends CoreTestCase
     @Test
     public void testTurnToBackgroundAfterSearchAndCheckResult()
     {
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.fillSearchField("Java");
         SearchPageObject.waitForSearchResultByTitle("Java (programming language)");
@@ -227,7 +227,7 @@ public class FirstTest extends CoreTestCase
                 secondSearchRequest = "Method",
                 folderName = "testAddTwoArticlesToListAndDeleteOne";
         // first article
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.fillSearchField(firstSearchRequest);
         SearchPageObject.waitForSearchResultByTitle(firstSearchRequest);
@@ -257,7 +257,7 @@ public class FirstTest extends CoreTestCase
     public void testCheckArticleTitleWithoutWait()  // ex8
     {
         String searchRequest = "Appium";
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.fillSearchField(searchRequest);
         SearchPageObject.waitForSearchResultByTitle(searchRequest);
@@ -274,7 +274,7 @@ public class FirstTest extends CoreTestCase
         String
                 title = "Java",
                 description = "Island of Indonesia";
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.fillSearchField(title);
         SearchPageObject.waitForSearchResultByTitleAndDescription(title, description);

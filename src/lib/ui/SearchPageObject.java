@@ -5,17 +5,17 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class SearchPageObject extends MainPageObject
+abstract public class SearchPageObject extends MainPageObject
 {
-    private static final String
-    SEARCH_FIELD_ON_MAIN_SCREEN = "xpath://android.widget.TextView[@text='Search Wikipedia']",
-    SEARCH_CANCEL_BUTTON = "id:org.wikipedia:id/search_close_btn",
-    SEARCH_FIELD_ON_SEARCH_SCREEN = "xpath://*[@resource-id='org.wikipedia:id/search_src_text'][@text='Search…']",
-    SEARCH_RESULT_BY_TITLE_TPL = "xpath://*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='{TITLE}']",
-    SEARCH_RESULT_ELEMENT = "xpath://android.widget.LinearLayout[@resource-id='org.wikipedia:id/page_list_item_container']",
-    SEARCH_RESULT_TITLE_ELEMENT = "xpath://android.widget.TextView[@resource-id='org.wikipedia:id/page_list_item_title']",
-    SEARCH_EMPTY_RESULT_ELEMENT = "xpath://*[@text='No results found']",
-    SEARCH_RESULT_BY_TITLE_AND_DESCRIPTION_TPL = "xpath://*[*[@text='{TITLE}'] and *[@text='{DESCRIPTION}']]";
+    protected static String
+    SEARCH_FIELD_ON_MAIN_SCREEN,
+    SEARCH_CANCEL_BUTTON,
+    SEARCH_FIELD_ON_SEARCH_SCREEN,
+    SEARCH_RESULT_BY_TITLE_TPL,
+    SEARCH_RESULT_ELEMENT,
+    SEARCH_RESULT_TITLE_ELEMENT,
+    SEARCH_EMPTY_RESULT_ELEMENT,
+    SEARCH_RESULT_BY_TITLE_AND_DESCRIPTION_TPL;
 
 
     /* TEMPLATE METHODS */
@@ -41,8 +41,10 @@ public class SearchPageObject extends MainPageObject
 
     public void initSearchInput()
     {
-        this.waitForElementAndClick(SEARCH_FIELD_ON_MAIN_SCREEN, "Cannot find the search field on main screen");
-        this.waitForElementPresent(SEARCH_FIELD_ON_SEARCH_SCREEN, "Cannot find the search field on search screen");
+        this.waitForElementAndClick(SEARCH_FIELD_ON_MAIN_SCREEN,
+                "Cannot find the search field on main screen");
+        this.waitForElementPresent(SEARCH_FIELD_ON_SEARCH_SCREEN,
+                "Cannot find the search field on search screen");
     }
 
 
