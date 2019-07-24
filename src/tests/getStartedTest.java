@@ -1,4 +1,5 @@
 package tests;
+
 import lib.CoreTestCase;
 import lib.Platform;
 import lib.ui.WelcomePageObject;
