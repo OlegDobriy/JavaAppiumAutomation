@@ -5,7 +5,7 @@ import lib.Platform;
 import lib.ui.WelcomePageObject;
 import org.junit.Test;
 
-public class getStartedTest extends CoreTestCase
+public class GetStartedTests extends CoreTestCase
 {
     @Test
     public void testPassThroughWelcome()

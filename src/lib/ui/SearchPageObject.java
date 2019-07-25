@@ -5,12 +5,15 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 abstract public class SearchPageObject extends MainPageObject
 {
     protected static String
     SEARCH_FIELD_ON_MAIN_SCREEN,
     SEARCH_CANCEL_BUTTON,
     SEARCH_FIELD_ON_SEARCH_SCREEN,
+    SEARCH_LINE_WITHOUT_TEXT,
     SEARCH_RESULT_BY_TITLE_TPL,
     SEARCH_RESULT_ELEMENT,
     SEARCH_RESULT_TITLE_ELEMENT,
@@ -102,6 +105,23 @@ abstract public class SearchPageObject extends MainPageObject
     }
 
 
+    public void checkTextInSearchField()
+    {
+        WebElement element = this.waitForElementPresent(
+                SEARCH_LINE_WITHOUT_TEXT,
+                "Cannot find the search field on search screen"
+        );
+
+        String textInTheSearchField = element.getAttribute("text");
+
+        assertEquals(
+                "There is no 'Search…' word in the search field",
+                "Search…",
+                textInTheSearchField
+        );
+    }
+
+
     public void assertThereIsNoResultAfterSearch() throws InterruptedException
     {
         this.checkElementIsMoving(SEARCH_RESULT_ELEMENT);
@@ -110,6 +130,7 @@ abstract public class SearchPageObject extends MainPageObject
                 "There is still at least one search result for the search"
         );
     }
+
 
     public List<WebElement> getListOfSearchResults()
     {

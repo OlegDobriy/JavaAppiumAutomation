@@ -8,20 +8,18 @@ import org.junit.Test;
 
 public class MyListTests extends CoreTestCase
 {
-
-    private MainPageObject MainPageObject;
     protected void setUp() throws Exception
     {
         super.setUp();
-
-        MainPageObject = new MainPageObject(driver);
     }
+
 
     @Test
     public void testAddFirstArticleToListAndDelete() throws InterruptedException
     {
-        String searchRequest = "Java (programming language)";
-        String folderName = "test: add to my list and delete";
+        String
+                searchRequest = "Java (programming language)",
+                folderName = "test: add to my list and delete";
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.fillSearchField(searchRequest);

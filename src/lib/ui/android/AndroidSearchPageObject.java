@@ -10,6 +10,7 @@ public class AndroidSearchPageObject extends SearchPageObject
         SEARCH_FIELD_ON_MAIN_SCREEN = "xpath://android.widget.TextView[@text='Search Wikipedia']";
         SEARCH_CANCEL_BUTTON = "id:org.wikipedia:id/search_close_btn";
         SEARCH_FIELD_ON_SEARCH_SCREEN = "xpath://*[@resource-id='org.wikipedia:id/search_src_text'][@text='Search…']";
+        SEARCH_LINE_WITHOUT_TEXT = "id:org.wikipedia:id/search_src_text";
         SEARCH_RESULT_BY_TITLE_TPL = "xpath://*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='{TITLE}']";
         SEARCH_RESULT_ELEMENT = "xpath://android.widget.LinearLayout[@resource-id='org.wikipedia:id/page_list_item_container']";
         SEARCH_RESULT_TITLE_ELEMENT = "xpath://android.widget.TextView[@resource-id='org.wikipedia:id/page_list_item_title']";

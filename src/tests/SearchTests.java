@@ -4,36 +4,35 @@ import lib.CoreTestCase;
 import lib.ui.*;
 import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Test;
-import org.openqa.selenium.WebElement;
 
 public class SearchTests extends CoreTestCase
 {
-
-    private lib.ui.MainPageObject MainPageObject;
     protected void setUp() throws Exception
     {
         super.setUp();
-
-        MainPageObject = new MainPageObject(driver);
     }
 
 
     @Test
     public void testSearchAndVerifyResult()
     {
+        String
+                searchRequest = "Java",
+                title = "Java (programming language)";
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
-        SearchPageObject.fillSearchField("Java");
-        SearchPageObject.waitForSearchResultByTitle("Java (programming language)");
+        SearchPageObject.fillSearchField(searchRequest);
+        SearchPageObject.waitForSearchResultByTitle(title);
     }
 
 
     @Test
     public void testCloseSearch()
     {
+        String searchRequest = "Java";
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
-        SearchPageObject.fillSearchField("Java");
+        SearchPageObject.fillSearchField(searchRequest);
         SearchPageObject.waitForSearchCancelButtonToAppear();
         SearchPageObject.clickSearchCancelButton();  // первый раз очищает введенный в поиск текст
         SearchPageObject.clickSearchCancelButton();  // второй раз выходит из экрана поиска
@@ -70,31 +69,12 @@ public class SearchTests extends CoreTestCase
 
 
     @Test
-    public void testCheckTextBeforeSearch()
-    {
-        MainPageObject.waitForElementAndClick(
-                "id:org.wikipedia:id/search_container",
-                "Cannot find the search field on main screen"
-        );
-
-        WebElement element = MainPageObject.waitForElementPresent(
-                "id:org.wikipedia:id/search_src_text",
-                "Cannot find the search field on search screen"
-        );
-
-        String text_in_the_search_field = element.getAttribute("text");
-
-        assertEquals(
-                "There is no 'Search…' word in the search field!",
-                "Search…",
-                text_in_the_search_field
-        );
-
-        MainPageObject.waitForElementAndSendKeys(
-                "id:org.wikipedia:id/search_src_text",
-                "Java",
-                "Cannot find the search field on search screen"
-        );
+    public void testCheckTextBeforeSearch() {
+        String searchRequest = "Python";
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
+        SearchPageObject.initSearchInput();
+        SearchPageObject.checkTextInSearchField();
+        SearchPageObject.fillSearchField(searchRequest);
     }
 
 
