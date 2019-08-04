@@ -108,12 +108,23 @@ public class MainPageObject
     public List<String> getTextFromElementsInList(List<WebElement> listOfWebElements)
     {
         List<String> resultList = new ArrayList();
-        for (WebElement element : listOfWebElements) {
-            String elementText = element.getAttribute("text");
-            resultList.add(elementText);
+        for (WebElement element : listOfWebElements)
+        {
+            if (Platform.getInstance().isAndroid())
+            {
+                String elementText = element.getAttribute("text");
+                resultList.add(elementText);
+            }
+            else
+            {
+                String elementText = element.getAttribute("name");
+                resultList.add(elementText);
+            }
         }
         return resultList;
     }
+
+
 
     protected void swipeUp (int timeOfSwipe)
     {

@@ -3,6 +3,7 @@ package lib.ui;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
