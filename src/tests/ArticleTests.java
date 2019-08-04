@@ -2,6 +2,7 @@ package tests;
 
 import lib.CoreTestCase;
 import lib.ui.*;
+import lib.ui.factories.ArticlePageObjectFactory;
 import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Test;
 
@@ -15,14 +16,14 @@ public class ArticleTests extends CoreTestCase
 
 
     @Test
-    public void testFindArticleAndCheckTitle()
+    public void testFindArticleAndCheckTitle() throws InterruptedException
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         SearchPageObject.fillSearchField("Java");
         SearchPageObject.waitForSearchResultByTitle("Java (programming language)");
         SearchPageObject.waitForSearchResultAndClick("Java (programming language)");
-        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
+        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         String articleTitle = ArticlePageObject.getArticleTitle();
         assertEquals(
                 "The title is different!",
@@ -33,21 +34,21 @@ public class ArticleTests extends CoreTestCase
 
 
     @Test
-    public void testSwipeArticle()
+    public void testSwipeArticle() throws InterruptedException
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
-        SearchPageObject.fillSearchField("Appium");
-        SearchPageObject.waitForSearchResultByTitle("Appium");
-        SearchPageObject.waitForSearchResultAndClick("Appium");
-        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
+        SearchPageObject.fillSearchField("Java");
+        SearchPageObject.waitForSearchResultByTitle("Java");
+        SearchPageObject.waitForSearchResultAndClick("Object-oriented programming language");
+        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         ArticlePageObject.waitForTitleElement();
         ArticlePageObject.swipeToFooter();
     }
 
 
     @Test
-    public void testCheckArticleTitleWithoutWait()  // ex8
+    public void testCheckArticleTitleWithoutWait() throws InterruptedException  // ex8
     {
         String searchRequest = "Appium";
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
@@ -55,7 +56,7 @@ public class ArticleTests extends CoreTestCase
         SearchPageObject.fillSearchField(searchRequest);
         SearchPageObject.waitForSearchResultByTitle(searchRequest);
         SearchPageObject.waitForSearchResultAndClick(searchRequest);
-        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
+        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         ArticlePageObject.checkTitleWithoutWait();
     }
 }

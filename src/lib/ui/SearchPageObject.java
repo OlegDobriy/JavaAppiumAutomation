@@ -1,6 +1,8 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -53,7 +55,7 @@ abstract public class SearchPageObject extends MainPageObject
 
     public void fillSearchField(String searchRequest)
     {
-        this.waitForElementAndSendKeys(SEARCH_FIELD_ON_SEARCH_SCREEN, searchRequest, "Cannot find the search field on search screen");
+        this.waitForElementAndSendKeys(SEARCH_FIELD_ON_SEARCH_SCREEN, searchRequest, "Cannot fill the search field on search screen");
     }
 
     public void waitForSearchCancelButtonToAppear()
@@ -79,6 +81,7 @@ abstract public class SearchPageObject extends MainPageObject
         String searchResultAfterReplace = getSearchResultByTitle(title);
         this.waitForElementPresent(searchResultAfterReplace, "Cannot find the search result: " + title);
     }
+
 
     public void waitForSearchResultAndClick(String searchResult)
     {

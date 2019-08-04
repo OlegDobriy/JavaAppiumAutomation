@@ -2,18 +2,19 @@ package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
+import lib.Platform;
 
-public class ArticlePageObject extends MainPageObject
+abstract public class ArticlePageObject extends MainPageObject
 {
-    private static final String
-    TITLE = "id:org.wikipedia:id/view_page_title_text",
-    FOOTER = "xpath://*[@resource-id='org.wikipedia:id/page_external_link'][@text='View page in browser']",
-    OPTIONS_BUTTON = "xpath://android.widget.ImageView[@content-desc='More options']",
-    ADD_TO_LIST_BUTTON = "xpath://*[@text='Add to reading list']",
-    OK_ONBOARDING_BUTTON = "id:org.wikipedia:id/onboarding_button",
-    MY_LIST_NAME_FIELD = "id:org.wikipedia:id/text_input",
-    CREATE_MY_LIST_BUTTON = "id:android:id/button1",
-    CLOSE_ARTICLE_BUTTON = "xpath://android.widget.ImageButton[@content-desc='Navigate up']";
+    protected static String
+    TITLE,
+    FOOTER,
+    OPTIONS_BUTTON,
+    ADD_TO_LIST_BUTTON,
+    OK_ONBOARDING_BUTTON,
+    MY_LIST_NAME_FIELD,
+    CREATE_MY_LIST_BUTTON,
+    CLOSE_ARTICLE_BUTTON;
 
     public ArticlePageObject(AppiumDriver driver)
     {
@@ -30,13 +31,26 @@ public class ArticlePageObject extends MainPageObject
 
     public String getArticleTitle()
     {
-       return waitForTitleElement().getAttribute("text");
+        if (Platform.getInstance().isAndroid()) {
+            return waitForTitleElement().getAttribute("text");
+        }
+        else
+        {
+            return waitForTitleElement().getAttribute("name");
+        }
     }
 
 
     public void swipeToFooter()
     {
-        this.swipeUpToFindElement(FOOTER, "Cannot swipe to the footer using 20 swipes", 20);
+        if (Platform.getInstance().isAndroid())
+        {
+            this.swipeUpToFindElement(FOOTER, "Cannot swipe to the footer using 50 swipes", 50);
+        }
+        else
+        {
+            this.swipeUpTillElementAppears(FOOTER, "Cannot swipe to the footer using 50 swipes", 50);
+        }
     }
 
 
@@ -121,6 +135,20 @@ public class ArticlePageObject extends MainPageObject
         );
     }
 
+
+    public void addFirstArticleToMyList() throws InterruptedException  // первый раз появляется подсказка, которую нужно закрыть
+    {
+        this.checkElementIsMoving(ADD_TO_LIST_BUTTON);
+        this.waitForElementAndClick(ADD_TO_LIST_BUTTON, "Cannot find 'Add to list' button");
+        this.waitForElementAndClick("id:places auth close", "Cannot close window");
+    }
+
+
+    public void addArticleToMyList() throws InterruptedException  // второй раз подсказки уже нет
+    {
+        this.checkElementIsMoving(ADD_TO_LIST_BUTTON);
+        this.waitForElementAndClick(ADD_TO_LIST_BUTTON, "Cannot find 'Add to list' button");
+    }
 
 
 }

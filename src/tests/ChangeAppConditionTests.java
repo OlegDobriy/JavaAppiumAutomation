@@ -2,6 +2,7 @@ package tests;
 
 import lib.CoreTestCase;
 import lib.ui.*;
+import lib.ui.factories.ArticlePageObjectFactory;
 import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Test;
 
@@ -22,7 +23,7 @@ public class ChangeAppConditionTests extends CoreTestCase
         SearchPageObject.fillSearchField("Java");
         SearchPageObject.waitForSearchResultByTitle("Java (programming language)");
         SearchPageObject.waitForSearchResultAndClick("Java (programming language)");
-        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
+        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         String titleBeforeRotation = ArticlePageObject.getArticleTitle();
         this.rotateToLandscape();
         String titleAfterRotation = ArticlePageObject.getArticleTitle();

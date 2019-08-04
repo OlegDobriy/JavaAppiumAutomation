@@ -1,16 +1,17 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
+import lib.Platform;
 
 
-public class MyListsPageObject extends MainPageObject
+abstract public class MyListPageObject extends MainPageObject
 {
 
-    private static final String
-            FOLDER_BY_NAME_TPL = "xpath://android.widget.TextView[@text='{FOLDER_NAME}']",
-            ARTICLE_IN_MY_LISTS_BY_NAME_TPL = "xpath://android.widget.TextView[@text='{ARTICLE_TITLE}']",
-            ARTICLE_TITLE_ON_ARTICLE_SCREEN_BY_NAME_TPL = "xpath://*[@resource-id='org.wikipedia:id/view_page_title_text'][@text='{ARTICLE_TITLE}']",
-            SEARCH_BUTTON = "id:org.wikipedia:id/menu_search_lists";
+    protected static String
+            FOLDER_BY_NAME_TPL,
+            ARTICLE_IN_MY_LISTS_BY_NAME_TPL,
+            ARTICLE_TITLE_ON_ARTICLE_SCREEN_BY_NAME_TPL,
+            SEARCH_BUTTON;
 
 
     /* TEMPLATE METHODS */
@@ -33,7 +34,7 @@ public class MyListsPageObject extends MainPageObject
     /* TEMPLATE METHODS */
 
 
-    public MyListsPageObject(AppiumDriver driver)
+    public MyListPageObject(AppiumDriver driver)
     {
         super(driver);
     }
@@ -57,14 +58,26 @@ public class MyListsPageObject extends MainPageObject
                 articleXpath,
                 "Cannot find the saved article"
         );
+        if (Platform.getInstance().isIOS())
+        {
+            this.clickElementToTheRightUpperCorner(articleXpath, "Cannot find saved article: " + articleTitle);
+        }
+        this.waitForArticleToDisappearInMyLists(articleTitle);
     }
+
+
+    public void checkArticleInMyList(String articleTitle)
+    {
+        this.waitForArticleToAppearInMyLists(articleTitle);
+    }
+
 
     public void waitForArticleToAppearInMyLists(String articleTitle)  // в папке выводится title фактического результата поиска, а не запрос
     {
         String articleXpath = getArticleXpathInMyLists(articleTitle);
         this.waitForElementPresent(
                 articleXpath,
-                "Article doesn't present. Article name is " + articleTitle);
+                "Article isn't presented. Article name is " + articleTitle);
     }
 
     public void waitForArticleToDisappearInMyLists(String articleName)
