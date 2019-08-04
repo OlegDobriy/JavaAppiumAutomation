@@ -22,7 +22,6 @@ public class MyListTests extends CoreTestCase
     public void testAddFirstArticleToListAndDelete() throws InterruptedException
     {
         String
-                searchRequest = "Java (programming language)",
                 searchRequest = "Java",
                 folderName = "test: add to my list and delete";
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
@@ -30,8 +29,6 @@ public class MyListTests extends CoreTestCase
         SearchPageObject.fillSearchField(searchRequest);
         SearchPageObject.waitForSearchResultByTitle(searchRequest);
         SearchPageObject.waitForSearchResultAndClick(searchRequest);
-        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
-        ArticlePageObject.createListAndAddArticle(folderName);
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         if (Platform.getInstance().isAndroid())
         {
@@ -42,14 +39,9 @@ public class MyListTests extends CoreTestCase
             ArticlePageObject.addFirstArticleToMyList();
         }
         ArticlePageObject.closeArticle();
-        NavigationUI NavigationUI = new NavigationUI(driver);
         NavigationUI NavigationUI = NavigationUIFactory.get(driver);
         NavigationUI.openMyList();
         Thread.sleep(1000);  // ВТОРОЙ слип, без этого иногда тапает не по папке, а по кнопке My list
-        MyListsPageObject MyListsPageObject = new MyListsPageObject(driver);
-        MyListsPageObject.openMyFolderByName(folderName);
-        MyListsPageObject.swipeArticleToDelete(searchRequest);
-        MyListsPageObject.waitForArticleToDisappearInMyLists(searchRequest);
         MyListPageObject MyListPageObject = MyListPageObjectFactory.get(driver);
         if (Platform.getInstance().isAndroid())
         {
