@@ -11,10 +11,19 @@ abstract public class ArticlePageObject extends MainPageObject
     FOOTER,
     OPTIONS_BUTTON,
     ADD_TO_LIST_BUTTON,
+    EXISTED_LIST_TPL,
     OK_ONBOARDING_BUTTON,
     MY_LIST_NAME_FIELD,
     CREATE_MY_LIST_BUTTON,
     CLOSE_ARTICLE_BUTTON;
+
+
+    /* TEMPLATE METHODS */
+    private static String getListXpathInCreatingList(String listName)
+    {
+        return EXISTED_LIST_TPL.replace("{LIST_NAME}", listName);
+    }
+
 
     public ArticlePageObject(AppiumDriver driver)
     {
@@ -95,7 +104,7 @@ abstract public class ArticlePageObject extends MainPageObject
         );
     }
 
-    public void addArticleToExistedList(String folderName) throws InterruptedException
+    public void addArticleToExistedList(String listName) throws InterruptedException
     {
         this.checkElementIsMoving(OPTIONS_BUTTON);
 
@@ -110,10 +119,10 @@ abstract public class ArticlePageObject extends MainPageObject
                 ADD_TO_LIST_BUTTON,
                 "Cannot find the 'Add to list' button"
         );
-
+        String existedListXpath = getListXpathInCreatingList(listName);
         this.waitForElementAndClick(
-                "//*[@resource-id='org.wikipedia:id/item_title'][@text='" + folderName +"']",
-                "Cannot find created folder " + folderName
+                existedListXpath,
+                "Cannot find created folder " + listName
         );
     }
 

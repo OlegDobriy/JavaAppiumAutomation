@@ -6,14 +6,15 @@ import lib.ui.ArticlePageObject;
 public class AndroidArticlePageObject extends ArticlePageObject
 {
     static {
-        TITLE = "";
-        FOOTER = "";
-        OPTIONS_BUTTON = "";
-        ADD_TO_LIST_BUTTON = "";
-        OK_ONBOARDING_BUTTON = "";
-        MY_LIST_NAME_FIELD = "";
-        CREATE_MY_LIST_BUTTON = "";
-        CLOSE_ARTICLE_BUTTON = "";
+        TITLE = "xpath://org.wikipedia:id/view_page_title_text";
+        FOOTER = "id:org.wikipedia:id/page_external_link";
+        OPTIONS_BUTTON = "xpath://android.widget.ImageView[@content-desc='More options']";
+        ADD_TO_LIST_BUTTON = "xpath://android.widget.TextView[@text='Add to reading list']";
+        EXISTED_LIST_TPL = "xpath://android.widget.TextView[@text='{LIST_NAME}']";
+        OK_ONBOARDING_BUTTON = "id:org.wikipedia:id/onboarding_button";
+        MY_LIST_NAME_FIELD = "id:org.wikipedia:id/text_input";
+        CREATE_MY_LIST_BUTTON = "xpath://android.widget.Button[@text='OK']";
+        CLOSE_ARTICLE_BUTTON = "xpath://android.widget.ImageButton[@content-desc='Navigate up']";
     }
 
 
