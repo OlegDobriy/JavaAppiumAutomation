@@ -1,7 +1,11 @@
 package tests;
 
 import lib.CoreTestCase;
+import lib.Platform;
 import lib.ui.*;
+import lib.ui.factories.ArticlePageObjectFactory;
+import lib.ui.factories.MyListPageObjectFactory;
+import lib.ui.factories.NavigationUIFactory;
 import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Test;
 
@@ -19,6 +23,7 @@ public class MyListTests extends CoreTestCase
     {
         String
                 searchRequest = "Java (programming language)",
+                searchRequest = "Java",
                 folderName = "test: add to my list and delete";
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
@@ -27,14 +32,30 @@ public class MyListTests extends CoreTestCase
         SearchPageObject.waitForSearchResultAndClick(searchRequest);
         ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
         ArticlePageObject.createListAndAddArticle(folderName);
+        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
+        if (Platform.getInstance().isAndroid())
+        {
+            ArticlePageObject.createListAndAddArticle(folderName);
+        }
+        else
+        {
+            ArticlePageObject.addFirstArticleToMyList();
+        }
         ArticlePageObject.closeArticle();
         NavigationUI NavigationUI = new NavigationUI(driver);
+        NavigationUI NavigationUI = NavigationUIFactory.get(driver);
         NavigationUI.openMyList();
         Thread.sleep(1000);  // ВТОРОЙ слип, без этого иногда тапает не по папке, а по кнопке My list
         MyListsPageObject MyListsPageObject = new MyListsPageObject(driver);
         MyListsPageObject.openMyFolderByName(folderName);
         MyListsPageObject.swipeArticleToDelete(searchRequest);
         MyListsPageObject.waitForArticleToDisappearInMyLists(searchRequest);
+        MyListPageObject MyListPageObject = MyListPageObjectFactory.get(driver);
+        if (Platform.getInstance().isAndroid())
+        {
+            MyListPageObject.openMyFolderByName(folderName);
+        }
+        MyListPageObject.swipeArticleToDelete(searchRequest);
     }
 
 
