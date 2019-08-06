@@ -10,7 +10,6 @@ public class IOSSearchPageObject extends SearchPageObject
     SEARCH_FIELD_ON_MAIN_SCREEN = "xpath://XCUIElementTypeSearchField[@name='Search Wikipedia']";
     SEARCH_CANCEL_BUTTON = "id:Close";
     SEARCH_FIELD_ON_SEARCH_SCREEN = "xpath://XCUIElementTypeSearchField[@value='Search Wikipedia']";
-    SEARCH_LINE_WITHOUT_TEXT = "id:not_defined";
     SEARCH_RESULT_BY_TITLE_TPL = "xpath://XCUIElementTypeLink[contains(@name, '{TITLE}')]";
     SEARCH_RESULT_ELEMENT = "xpath://XCUIElementTypeLink";
     SEARCH_RESULT_TITLE_ELEMENT = "xpath://XCUIElementTypeLink";

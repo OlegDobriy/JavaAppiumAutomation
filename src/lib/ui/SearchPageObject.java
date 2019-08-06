@@ -128,8 +128,7 @@ abstract public class SearchPageObject extends MainPageObject
 
     public void assertThereIsNoResultAfterSearch() throws InterruptedException
     {
-        this.checkElementIsMoving(SEARCH_RESULT_ELEMENT);
-        this.waitForElementPresent(
+        this.waitForElementNotPresent(
                 SEARCH_RESULT_ELEMENT,
                 "There is still at least one search result for the search"
         );

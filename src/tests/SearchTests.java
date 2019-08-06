@@ -1,6 +1,7 @@
 package tests;
 
 import lib.CoreTestCase;
+import lib.Platform;
 import lib.ui.*;
 import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Test;
@@ -69,7 +70,12 @@ public class SearchTests extends CoreTestCase
 
 
     @Test
-    public void testCheckTextBeforeSearch() {
+    public void testCheckTextBeforeSearch()
+    {
+        if (Platform.getInstance().isIOS())
+        {
+            return;
+        }
         String searchRequest = "Python";
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
