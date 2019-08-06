@@ -36,11 +36,15 @@ public class ArticleTests extends CoreTestCase
     @Test
     public void testSwipeArticle() throws InterruptedException
     {
+        String
+                searchRequest = "Enter",
+                description = "Wikimedia disambiguation page";
+
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
-        SearchPageObject.fillSearchField("Java");
-        SearchPageObject.waitForSearchResultByTitle("Java");
-        SearchPageObject.waitForSearchResultAndClick("Object-oriented programming language");
+        SearchPageObject.fillSearchField(searchRequest);
+        SearchPageObject.waitForSearchResultByTitle(searchRequest);
+        SearchPageObject.waitForSearchResultAndClick(description);
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         ArticlePageObject.waitForTitleElement();
         ArticlePageObject.swipeToFooter();
